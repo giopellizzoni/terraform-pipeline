@@ -24,14 +24,22 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: Checkout
+      - name: 🚀 Checkout do código
         uses: actions/checkout@v4
 
-      - name: Terraform Init
+      - name: 🏗️ Instalar Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: latest
+
+      - name: 📌 Verificar versão do Terraform
+        run: terraform --version
+
+      - name: 🛠️ Inicializar Terraform
         run: terraform init
 
-      - name: Terraform Validate
+      - name: ✅ Validar configuração do Terraform
         run: terraform validate
 
-      - name: Terraform Plan
+      - name: 📋 Planejar Terraform
         run: terraform plan

@@ -35,11 +35,5 @@ jobs:
       - name: 🛠️ Inicializar Terraform
         run: terraform init
 
-      - name: ✅ Validar configuração do Terraform
-        run: terraform validate
-
-      - name: 📋 Planejar Terraform
-        run: terraform plan
-
       - name: 🚀 Aplicar Terraform
         run: terraform apply -auto-approve
