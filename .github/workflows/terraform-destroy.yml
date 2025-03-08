@@ -21,6 +21,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: 🏗️ Instalar Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: latest
+
       - name: Terraform Init
         run: terraform init
 
