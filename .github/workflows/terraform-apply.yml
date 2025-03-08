@@ -1,5 +1,7 @@
 name: Terraform Apply
+
 on: workflow_dispatch
+
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -17,15 +19,27 @@ jobs:
     defaults:
       run:
         shell: bash
+
     steps:
-      - name: Checkout
+      - name: 🚀 Checkout do código
         uses: actions/checkout@v4
 
-      - name: Setup Terraform
+      - name: 🏗️ Instalar Terraform
         uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: latest
 
-      - name: Terraform Init
+      - name: 📌 Verificar versão do Terraform
+        run: terraform --version
+
+      - name: 🛠️ Inicializar Terraform
         run: terraform init
 
-      - name: Terraform apply
+      - name: ✅ Validar configuração do Terraform
+        run: terraform validate
+
+      - name: 📋 Planejar Terraform
+        run: terraform plan
+
+      - name: 🚀 Aplicar Terraform
         run: terraform apply -auto-approve
